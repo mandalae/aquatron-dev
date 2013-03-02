@@ -28,6 +28,13 @@ $brands = $brand->getAllActive();
 
 $page->assign('brands', $brands);
 
+// Setup ACL
+$acl = new ACL();
+$aclList = $acl->getAllActive();
+foreach ($aclList as $item){
+    define("ACL_" . strtoupper($item['acl_text']), $item['id']);
+}
+
 $text = new Text();
-$menuItems = $text->getAllActive();
+$menuItems = $text->getAllVisible();
 $page->assign("menuItems", $menuItems);

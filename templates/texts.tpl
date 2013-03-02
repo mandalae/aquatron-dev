@@ -2,6 +2,6 @@
 
 <h1>{$headline}</h1>
 
-{$text}
+<article>{$text}</article>
 
 {include file="_footer.tpl"}

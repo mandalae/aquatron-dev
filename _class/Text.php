@@ -14,4 +14,14 @@ class Text extends Content {
         return $return;
     }
     
+    public function getAllVisible(){
+        $sql = "SELECT * FROM " . $this->_tableName . " WHERE active > 0 AND visible > 0";
+        $res = $this->_db->query($sql);
+        $return = array();
+        while ($row = mysqli_fetch_array($res)){
+            $return[] = $row;
+        }
+        return $return;
+    }
+    
 }

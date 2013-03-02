@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #004a70 url(/_gfx/background.png) center top no-repeat;
+    background: #004a70 url(/_gfx/background.png) center -200px no-repeat;
 }
 
 a,
@@ -27,7 +27,7 @@ a:active {
 #top {
     float: left;
     clear: both;
-    height: 400px;
+    height: 200px;
     width: 1122px;
 }
 
@@ -50,7 +50,7 @@ a:active {
         position: relative;
     }
         #topmenu li a {
-            color: #FFF;
+            color: #fff;
             text-decoration: none;
             display: inline-block;
             width: 100%;
@@ -58,6 +58,7 @@ a:active {
             padding-top: 16px;
             text-align: center;
             font-size: 14px;
+            text-shadow: 0px 4px 8px rgba(0,0,0,.7);
         }
         #topmenu li a:hover {
             color: #F00;
@@ -124,6 +125,10 @@ a:active {
 #mainContent {
     float: left;
     width: 868px;
+}
+
+.m-left10 {
+    margin-left: 10px;
 }
 
 .login-form-email,
@@ -195,14 +200,14 @@ a:active {
     margin: 0px;
     padding: 0px;
 }
-    .staff-list li {
+    .staff-list section {
         float: left;
         clear: both;
     }
-    .staff-list li div {
+    .staff-list section div {
         float: left;
     }
-    .staff-list li div.description {
+    .staff-list section div.description {
         width: 400px;
         margin-left: 20px;
     }
@@ -213,4 +218,45 @@ a:active {
         margin: 0px;
         font-weight: normal;
         font-style: italic;
+    }
+
+fieldset {
+    border: none;
+    margin-bottom: 10px;
+    float: left;
+    border-top: 1px solid #999;
+    padding: 10px 10px 0px 0px;
+}
+    fieldset legend {
+        border: 1px solid #999;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+.form-element {
+    float: left;
+    clear: both;
+    margin-bottom: 20px;
+}
+
+    .form-element input {
+        width: 300px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #AAA;
+    }
+    .form-element label {
+        display: block;
+        min-width: 200px;
+        font-weight: bold;
+    }
+    .form-element input.submit {
+        width: auto;
+        padding: 5px 10px;
+        float: right;
+    }
+    .form-element.checkbox input, 
+    .form-element.checkbox label {
+        display: inline;
+        width: auto;
     }
