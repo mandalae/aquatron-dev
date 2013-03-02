@@ -30,7 +30,7 @@
                             <input type="hidden" value="{$smarty.server.REQUEST_URI}" name="returnUrl">
                             <input type="text" value="" name="email" class="js-formInput login-form-email" />
                             <input type="password" class="js-formInput login-form-password" name="password" />
-                            <input type="submit" value="Login" class="button green" />
+                            <input type="submit" value="Login" class="button green box-shadow" />
                         </form>
                     </li>
                     {else}

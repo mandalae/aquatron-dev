@@ -158,11 +158,17 @@ a:active {
     min-width: 75px;
     border: 1px solid #666;
     font-weight: bold;
-    height: 22px;
+    /*height: 22px;*/
     display: inline-block;
     color: #444;
     background: #f5f5f5;
     border-radius: 3px;
+    padding: 5px 10px;
+}
+.button:hover {
+    background: #EEE;
+}
+.box-shadow {
     -webkit-box-shadow: 0px 0px 0px, 0px 4px 8px rgba(0,0,0,.7);
     -moz-box-shadow: 0px 0px 0px rgba(219,31,5,1), 0px 4px 8px rgba(0,0,0,.7);
     box-shadow: 0px 0px 0px rgba(219,31,5,1), 0px 4px 8px rgba(0,0,0,.7);
@@ -222,10 +228,10 @@ a:active {
 
 fieldset {
     border: none;
-    margin-bottom: 10px;
+    margin: 0px 0px 10px 0px;
     float: left;
     border-top: 1px solid #999;
-    padding: 10px 10px 0px 0px;
+    padding: 10px 20px 0px 0px;
 }
     fieldset legend {
         border: 1px solid #999;

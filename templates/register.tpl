@@ -26,7 +26,7 @@
         </div>
     </fieldset>
     
-    <fieldset form="registrationForm" class="m-left10">
+    <fieldset form="registrationForm">
         <legend>User information</legend>
         <div class="form-element">
             <label for="name">Full name:</label>
@@ -55,7 +55,7 @@
     </fieldset>
     
     <div class="form-element">
-        <input type="submit" value="Save" class="submit" />
+        <input type="submit" value="Save" class="submit button" />
     </div>
     
 </form>
