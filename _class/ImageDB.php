@@ -44,7 +44,7 @@ class ImageDB {
     public function getSingleHTML($name){
         $html[] = '<script type="text/javascript">
                         $(function(){
-                            $(".imagedb_single").live("click", function(e){
+                            $(".form-element").on("click", ".imagedb_single", function(e){
                                 e.preventDefault();
                                 
                                 window.open("/admin/imagedb/?selector='.$name.'", "imagedb", "height=760,width=1075,menubar=no,resizable=yes,scrollbars=yes,toolbar=no");
@@ -65,7 +65,7 @@ class ImageDB {
     public function getMultipleHTML($name, $images = array()){
         $html[] = '<script type="text/javascript">
                         $(function(){
-                            $(".imagedb_multiple").live("click", function(e){
+                            $(".form-element").on("click", ".imagedb_multiple", function(e){
                                 e.preventDefault();
                                 
                                 var images = "";

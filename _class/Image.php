@@ -261,12 +261,11 @@ class Image extends Content {
     	// move file
     	$old = $source;
     	$new = $this->generateOrigFilename();
-
-    	if (!rename($old, $new)){
+    	
+    	if (!move_uploaded_file($old, $new)){
             return json_encode(array('msg' => 'Permission denied', 'success' => false));
             exit;
         }
-        
     	$thumb = $this->getPath(135, 135);
     	
     	return array("path" => $thumb, "id" => $this->getId());
