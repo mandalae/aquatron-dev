@@ -23,6 +23,7 @@
                 <li><a href="/admin/pages">Pages</a></li>
                 <li><a href="/admin/users">Users</a></li>
                 <li><a href="/admin/brands">Brands</a></li>
+                <li><a href="/admin/products">Products</a></li>
             </ul>
         </div>
         <div id="mainContent">
