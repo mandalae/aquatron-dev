@@ -34,5 +34,6 @@ ExpiresByType application/xml A1800
 RewriteRule ^login$ /login.php [nc]
 RewriteRule ^staff$ /staff.php [nc]
 RewriteRule ^register$ /register.php [nc]
+RewriteRule ^products$ /products.php [nc]
 
 RewriteRule ^page/([a-z0-9-_]+)$ /texts.php?seo=$1 [nc]

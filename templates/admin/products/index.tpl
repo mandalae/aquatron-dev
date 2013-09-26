@@ -3,6 +3,7 @@
 <h1>Products index</h1>
 
 <a href="/admin/products/edit.php" class="button">Create new product</a>
+<a href="/admin/products/upload.php" class="button">Upload products (CSV)</a>
 
 <table class="data">
     <colgroup>
@@ -20,7 +21,7 @@
     <tbody>
         {foreach $products as $product}
         <tr>
-            <td>{$product['headline']}</td>
+            <td>{$product['name']}</td>
             <td>{if $product['active'] > 0}Yes{else}No{/if}</td>
             <td><a href="/admin/products/edit.php?id={$product['id']}">Edit</a> | <a href="/admin/products/?delete={$product['id']}" class="js-confirm">Delete</a></td>
         </tr>
