@@ -28,6 +28,11 @@ $brands = $brand->getAllActive();
 
 $page->assign('brands', $brands);
 
+$category = new Category();
+$categories = $category->getAllActive();
+
+$page->assign('categories', $categories);
+
 // Setup ACL
 $acl = new ACL();
 $aclList = $acl->getAllActive();

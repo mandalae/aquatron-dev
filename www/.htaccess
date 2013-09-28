@@ -34,6 +34,11 @@ ExpiresByType application/xml A1800
 RewriteRule ^login$ /login.php [nc]
 RewriteRule ^staff$ /staff.php [nc]
 RewriteRule ^register$ /register.php [nc]
-RewriteRule ^products$ /products.php [nc]
 
+RewriteRule ^products$ /products.php [nc]
+RewriteRule ^products/page/([0-9]+)$ /products.php?offset=$1 [nc]
+RewriteRule ^brand/([a-z0-9-_]+)$ /products.php?brand=$1 [nc]
+RewriteRule ^category/([a-z0-9-_]+)$ /products.php?category=$1 [nc]
+
+RewriteRule ^product/([a-z0-9-_]+)$ /prod.php?seo=$1 [nc]
 RewriteRule ^page/([a-z0-9-_]+)$ /texts.php?seo=$1 [nc]

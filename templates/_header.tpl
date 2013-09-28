@@ -11,14 +11,23 @@
     
         <header id="top">
             <div id="logo">
-                
+                <a href="/"><img src="/_gfx/logo.gif" /></a>
             </div>
         </header>
         <nav>
             <ul id="topmenu">
-                <li><a href="/">Shop</a></li>
+                <li class="js-categoryButton">
+                    <a href="/products">Scuba diving</a>
+                    <div class="hidden" id="category-overlay">
+                        <ul>
+                        {foreach $categories as $category}
+                            <li><a href="/category/{$category['seo']}">{$category['name']}</a></li>
+                        {/foreach}
+                        </ul>
+                    </div>
+                </li>
                 <li class="js-brandsButton">
-                    <a href="/">Brands</a>
+                    <a href="/products">Brands</a>
                     <div class="hidden" id="brand-overlay">
                         <ul>
                         {foreach $brands as $brand}
@@ -59,5 +68,7 @@
                     <li><a href="/staff">Meet the staff</a></li>
                 </ul>
             </nav>
-            {/if}
             <div id="mainContent">
+            {else}
+            <div id="fullContent">
+            {/if}

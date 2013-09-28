@@ -19,6 +19,16 @@
         </select>
     </div>
     
+    <div class="form-element">
+        <label for="description">Description:</label>
+        <textarea name="description" id="description">{if isset($product)}{$product->getDescription()}{/if}</textarea>
+    </div>
+    
+    <div class="form-element">
+        <label for="image">Image:</label>
+        {imagedb id=$product->getImage() name="image"}
+    </div>
+    
     <div class="form-element checkbox">
         <label for="active">Active:</label>
         <input type="checkbox" value="1" name="active" id="active"{if $product->getActive() > 0} checked="checked"{/if} />
