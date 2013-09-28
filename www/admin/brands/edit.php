@@ -1,5 +1,5 @@
 <?php
-require_once "_page.php";
+require_once "../../_inc/_page.php";
 
 $brand = new Brand(isset($_GET['id']) ? $_GET['id'] : null);
 

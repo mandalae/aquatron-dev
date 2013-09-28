@@ -1,5 +1,5 @@
 <?php
-require_once "_page.php";
+require_once "_inc/_page.php";
 
 $text = new Text();
 $text->loadByType('seo', 'products');
@@ -19,10 +19,17 @@ $category = new Category();
 $category->loadByType('seo', $categorySeo);
 
 $product = new Product();
-$products = $product->getActiveProducts(array('brand' => $brand->getId(), 'category' => $category->getId()), ($offset*$limit), $limit);
+$meta = $product->getActiveProducts(array('brand' => $brand->getId(), 'category' => $category->getId()), ($offset*$limit), $limit);
 
-$page->assign('products', $products);
+$page->assign('products', $meta['products']);
 $page->assign('nextPage', $offset+1);
 $page->assign('previousPage', $offset-1);
+if ($meta['numberOfProducts'] > ($offset*$limit)+$limit){
+    $page->assign('showMore', true);
+} else {
+    $page->assign('showMore', false);
+}
+$page->assign('categorySeo', $categorySeo);
+$page->assign('brandSeo', $brandSeo);
 
 $page->display('products.tpl');

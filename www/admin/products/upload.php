@@ -1,5 +1,5 @@
 <?php
-require_once "_page.php";
+require_once "../../_inc/_page.php";
 
 if (isset($_FILES['csv'])){
     $csv = file_get_contents($_FILES['csv']['tmp_name']);

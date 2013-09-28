@@ -21,7 +21,7 @@
     
     <div class="form-element">
         <label for="description">Description:</label>
-        <textarea name="description" id="description">{if isset($product)}{$product->getDescription()}{/if}</textarea>
+        <textarea name="description" id="description" class="editor">{if isset($product)}{$product->getDescription()}{/if}</textarea>
     </div>
     
     <div class="form-element">

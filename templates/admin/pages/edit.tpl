@@ -19,6 +19,11 @@
         <input type="checkbox" value="1" name="active" id="active"{if $text->getActive() > 0} checked="checked"{/if} />
     </div>
     
+    <div class="form-element checkbox">
+        <label for="visible">Visible:</label>
+        <input type="checkbox" value="1" name="visible" id="visible"{if $text->getVisible() > 0} checked="checked"{/if} />
+    </div>
+    
     <div class="form-element">
         <input type="submit" value="Save" class="submit" />
     </div>

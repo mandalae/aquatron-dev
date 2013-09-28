@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+set_include_path(get_include_path() . ":/home/rpediem/www/aqua/_class:/home/rpediem/www/aqua");
+
 // Autoload classes
 function aq_autoload($class_name) {
     $class_name = str_replace('_', '/', $class_name);

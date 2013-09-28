@@ -1,5 +1,5 @@
 <?php
-require_once "_page.php";
+require_once "../../_inc/_page.php";
 
 if (isset($_GET['delete'])){
     $user = new User($_GET['delete']);

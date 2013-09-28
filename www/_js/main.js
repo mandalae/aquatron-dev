@@ -12,6 +12,7 @@ $(function(){
     
     $(".js-brandsButton").bind('mouseenter', function(e){
         clearTimeout(brandTimeout);
+        $("#category-overlay").hide();
         $("#brand-overlay").slideDown('fast');
     });
     
@@ -23,6 +24,7 @@ $(function(){
     
     $(".js-categoryButton").bind('mouseenter', function(e){
         clearTimeout(categoryTimeout);
+        $("#brand-overlay").hide();
         $("#category-overlay").slideDown('fast');
     });
     

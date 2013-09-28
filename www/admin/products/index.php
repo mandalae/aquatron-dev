@@ -1,5 +1,5 @@
 <?php
-require_once "_page.php";
+require_once "../../_inc/_page.php";
 
 if (isset($_GET['delete'])){
     $product = new Product($_GET['delete']);

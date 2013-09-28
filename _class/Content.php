@@ -72,7 +72,8 @@ class Content{
 				if (is_integer($value)){
 					$sql .= $value;
 				} else {
-					$sql .= "'" . mysqli_real_escape_string($this->_db->getMysqli(), $value) . "'";
+					//$sql .= "'" . mysqli_real_escape_string($this->_db->getMysqli(), $value) . "'";
+					$sql .= "'" . stripslashes($value) . "'";
 				}
 				if (count($this->_data) > $x){
 					$sql .= ", ";
@@ -87,7 +88,8 @@ class Content{
 				if (is_integer($value) > 0){
 					$sql .= $key. " = " . $value;
 				} else {
-					$sql .= $key. " = '" . mysqli_real_escape_string($this->_db->getMysqli(), $value) . "'";
+					//$sql .= $key. " = '" . mysqli_real_escape_string($this->_db->getMysqli(), $value) . "'";
+					$sql .= $key . " = '" . stripslashes($value) . "'";
 				}
 				if (count($this->_data) > $x){
 					$sql .= ", ";
@@ -119,8 +121,8 @@ class Content{
 
     public function loadByType($type, $value){
     	$rs = $this->_db->query("SELECT " . $this->_id . " FROM " . $this->_tableName . " WHERE " . $type . " = '" . $value . "' LIMIT 1");
-    	if (mysqli_num_rows($rs) == 1){
-    		$row = mysqli_fetch_array($rs);
+    	if (mysql_num_rows($rs) == 1){
+    		$row = mysql_fetch_array($rs);
     		$this->setId($row[$this->_id]);
     		$this->load();
     	}
@@ -129,7 +131,7 @@ class Content{
 
 	public function load($fields = "*"){
 		$rs = $this->_db->query("SELECT " . $fields . " FROM " . $this->_tableName . " WHERE " . $this->_id . " = " . $this->getId());
-		$newsarr = mysqli_fetch_array($rs);
+		$newsarr = mysql_fetch_array($rs);
 		
 		$this->populate($newsarr);
 	}
@@ -146,7 +148,7 @@ class Content{
 	    } else {
     	    $rs = $this->_db->query("DESCRIBE " . $this->_tableName);
     	    $rows = array();
-    	    while ($row = mysqli_fetch_array($rs)){
+    	    while ($row = mysql_fetch_array($rs)){
     	        $rows[] = $row;
     	        if (isset($values[$row['Field']]))
         	    	$this->_data[$row['Field']] = $values[$row['Field']];
@@ -161,7 +163,7 @@ class Content{
         $sql = "SELECT * FROM " . $this->_tableName;
         $res = $this->_db->query($sql);
         $return = array();
-        while ($row = mysqli_fetch_array($res)){
+        while ($row = mysql_fetch_array($res)){
             $return[] = $row;
         }
         return $return;

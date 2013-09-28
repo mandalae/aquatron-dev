@@ -1,5 +1,5 @@
 <?php
-require_once "_page.php";
+require_once "../../_inc/_page.php";
 
 $user = new User(isset($_GET['id']) ? $_GET['id'] : null);
 

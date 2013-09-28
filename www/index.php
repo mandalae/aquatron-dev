@@ -1,5 +1,5 @@
 <?php
-require_once "_page.php";
+require_once "_inc/_page.php";
 
 $text = new Text(1);
 $page->assign('text', $text);
