@@ -1,4 +1,4 @@
-{include file="_header.tpl" title="News"}
+{include file="_header.tpl" title="News" showTeaser="true"}
 
 {$text->getContent()}
 

@@ -35,6 +35,16 @@ $categories = $category->getAllActive();
 
 $page->assign('categories', $categories);
 
+$course = new Course();
+$courses = $course->getAllActive();
+
+$page->assign('courses', $courses);
+
+$teaser = new Teaser();
+$teasers = $teaser->getAllActive();
+
+$page->assign('teasers', $teasers);
+
 // Setup ACL
 $acl = new ACL();
 $aclList = $acl->getAllActive();

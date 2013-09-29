@@ -17,8 +17,8 @@
         <nav>
             <ul id="topmenu">
                 <li class="js-categoryButton">
-                    <a href="/products">Scuba diving</a>
-                    <div class="hidden" id="category-overlay">
+                    <a href="/products">Products</a>
+                    <div class="hidden overlay" id="category-overlay">
                         <ul>
                         {foreach $categories as $category}
                             <li><a href="/category/{$category['seo']}">{$category['name']}</a></li>
@@ -27,14 +27,38 @@
                     </div>
                 </li>
                 <li class="js-brandsButton">
-                    <a href="/products">Brands</a>
-                    <div class="hidden" id="brand-overlay">
+                    <a href="/products">Manufacturers</a>
+                    <div class="hidden overlay" id="brand-overlay">
                         <ul>
                         {foreach $brands as $brand}
                             <li><a href="/brand/{$brand['seo']}">{$brand['name']}</a></li>
                         {/foreach}
                         </ul>
                     </div>
+                </li>
+                <li class="js-aquatronButton">
+                    <a href="/contact">Aquatron</a>
+                    <div class="hidden overlay" id="aquatron-overlay">
+                        <ul>
+                            {foreach $menuItems as $item}
+                            <li><a href="/page/{$item['seo']}">{$item['headline']}</a></li>
+                            {/foreach}
+                            <li><a href="/staff">Meet the staff</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="js-courseButton">
+                    <a href="/courses">Dive Courses</a>
+                    <div class="hidden overlay" id="course-overlay">
+                        <ul>
+                            {foreach $courses as $course}
+                            <li><a href="/course/{$course['seo']}">{$course['headline']}</a></li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="/offers">Special offers</a>
                 </li>
                 <li><a href="/register">Register</a></li>
                 {if !$user->isLoggedIn()}
@@ -59,16 +83,13 @@
             </ul>
         </nav>
         <div id="content">
-            {if !$hideMenu}
-            <nav id="menu">
+            {if $showTeaser}
+            <div id="teaser">
                 <ul>
-                    {foreach $menuItems as $item}
-                    <li><a href="/page/{$item['seo']}">{$item['headline']}</a></li>
+                    {foreach $teasers as $teaser}
+                        <li {if $teaser@index != 0}class="hidden"{/if}><a href="{$teaser['url']}">{image id=$teaser['image'] width="1060" height="250" crop=true}</a></li>
                     {/foreach}
-                    <li><a href="/staff">Meet the staff</a></li>
                 </ul>
-            </nav>
-            <div id="mainContent">
-            {else}
-            <div id="fullContent">
+            </div>
             {/if}
+            <div id="fullContent">

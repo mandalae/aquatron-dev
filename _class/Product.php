@@ -17,7 +17,12 @@ class Product extends Content {
             $sql .= " AND brand = " . $options['brand'];
             $countSql .= " AND brand = " . $options['brand'];
         }
-        
+
+        if (isset($options['offer']) && $options['offer']){
+            $sql .= " AND offer > 0";
+            $countSql .= " AND brand > 0";
+        }
+
         $count = $this->_db->query($countSql);
         $countRow = mysql_fetch_row($count);
 

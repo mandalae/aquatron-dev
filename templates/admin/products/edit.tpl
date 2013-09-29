@@ -10,6 +10,16 @@
     </div>
     
     <div class="form-element">
+        <label for="price">Price:</label>
+        <input type="input" value="{$product->getPrice()}" name="price" id="price" />
+    </div>
+    
+    <div class="form-element">
+        <label for="discountPrice">Discounted Price:</label>
+        <input type="input" value="{$product->getDiscount_price()}" name="discountPrice" id="discountPrice" />
+    </div>
+    
+    <div class="form-element">
         <label for="name">Brand:</label>
         <select name="brand">
             <option>Select one</option>
@@ -32,6 +42,11 @@
     <div class="form-element checkbox">
         <label for="active">Active:</label>
         <input type="checkbox" value="1" name="active" id="active"{if $product->getActive() > 0} checked="checked"{/if} />
+    </div>
+    
+    <div class="form-element checkbox">
+        <label for="offer">Offer:</label>
+        <input type="checkbox" value="1" name="offer" id="offer"{if $product->getOffer() > 0} checked="checked"{/if} />
     </div>
     
     <div class="form-element">

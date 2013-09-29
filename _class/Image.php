@@ -1,19 +1,18 @@
 <?php
-require_once 'phpthumb/ThumbLib.inc.php';
+require_once '_inc/phpthumb/ThumbLib.inc.php';
 
 class Image extends Content {
     
     protected $_tableName = 'images';
-    private $_cachePath = 'http://img.aquatron.co.uk';
-    private $_realPath = '/Users/skaa/Sites/aquatron.co.uk/images/';
+    private $_cachePath = 'http://aqua.rpediem.com/images';
+    private $_realPath = '/home/rpediem/public_html/aqua/images/';
     //private $_iccPath = '/Users/skaa/Sites/aquatron.co.uk/icc';
-    //private $_im;
+    private $_im;
     private $_thumb = null;
     
     function Image($data = null){
-        //$this->_im = new Imagick();
-        $this->_realPath = str_replace('mobile', '', $_SERVER['DOCUMENT_ROOT']) . "/../images/";
-        if (isset($_SERVER['APPLICATION_ENV'])) $this->_cachePath = 'http://dev.img.aquatron.co.uk';
+        $this->_im = new Imagick();
+        $this->_realPath = str_replace('mobile', '', $_SERVER['DOCUMENT_ROOT']) . "/images/";
         parent::__construct($data);
     }
     
@@ -45,7 +44,7 @@ class Image extends Content {
         }
         $res = $this->_db->query($sql);
         $return = array();
-        while ($row = mysqli_fetch_array($res)){
+        while ($row = mysql_fetch_array($res)){
             $return[] = new Image($row);
         }
         return $return;
@@ -73,13 +72,13 @@ class Image extends Content {
     
     public function identifyImage($file)
     {
-    	/*$this->_im->readImage($file);
-    	return $this->_im->identifyImage();*/
+    	$this->_im->readImage($file);
+    	return $this->_im->identifyImage();
     	
-    	$this->thumb = PhpThumbFactory::create($file);
-
-    	$dimensions = $this->thumb->getCurrentImageInformation();
-    	return $dimensions;
+//    	$this->thumb = PhpThumbFactory::create($file);
+//
+//    	$dimensions = $this->thumb->getCurrentImageInformation();
+//    	return $dimensions;
     }
     
     public function generateOrigFilename($id = 0)
@@ -109,7 +108,7 @@ class Image extends Content {
 
             if (!is_file($origFile)) return 'about:blank';
             
-            /*$this->_im->clear();
+            $this->_im->clear();
 			$this->_im->readImage($origFile);
 			$info = $this->_im->identifyImage($origFile);
 
@@ -153,46 +152,46 @@ class Image extends Content {
 			$this->_im->setImageFormat("jpg");
 			$this->_im->setCompression(Imagick::COMPRESSION_JPEG);
 			$this->_im->setCompressionQuality(80);
-			$this->_im->writeImage($this->_realPath.'/'.$cachefile);
+			$this->_im->writeImage($fileName);
 			$this->_im->clear();
-			*/
 			
-			$this->thumb = PhpThumbFactory::create($origFile);
 			
-			$dimensions = $this->thumb->getCurrentDimensions();
-			
-			if ($width == 0 && $height == 0) {
-				$this->thumb->save($fileName);
+//			$this->thumb = PhpThumbFactory::create($origFile);
+//			
+//			$dimensions = $this->thumb->getCurrentDimensions();
+//			
+//			if ($width == 0 && $height == 0) {
+//				$this->thumb->save($fileName);
 				//copy($tmpName, $fileName);
-				chmod($fileName, 0666);
+//				chmod($fileName, 0666);
 				//unlink($tmpName);
 				//copy($this->getPath(), $imagepath);
-			} else {
-			    if ($width == 0){
-			    	$width = $this->calculate('width', $height, $dimensions);
-			    }
-			    if ($height == 0){
-			    	$height = $this->calculate('height', $width, $dimensions);
-			    }
-			
-				if ($width == $height) {
-					$size = $width;
-					if ($this->getWidth() < $this->getHeight()) {
-						$height = 0;
-					} else {
-						$width = 0;
-					}
-					$this->thumb->resize($width, $height);
-					$this->thumb->cropFromCenter($size);
-				} else {
-					$this->thumb->resize($width, $height);
-				}
-
-				$image = $this->thumb->save($fileName);
+//			} else {
+//			    if ($width == 0){
+//			    	$width = $this->calculate('width', $height, $dimensions);
+//			    }
+//			    if ($height == 0){
+//			    	$height = $this->calculate('height', $width, $dimensions);
+//			    }
+//			
+//				if ($width == $height) {
+//					$size = $width;
+//					if ($this->getWidth() < $this->getHeight()) {
+//						$height = 0;
+//					} else {
+//						$width = 0;
+//					}
+//					$this->thumb->resize($width, $height);
+//					$this->thumb->cropFromCenter($size);
+//				} else {
+//					$this->thumb->resize($width, $height);
+//				}
+//
+//				$image = $this->thumb->save($fileName);
 				//copy($tmpName, $fileName);
-				chmod($fileName, 0666);
+//				chmod($fileName, 0666);
 				//unlink($tmpName);
-			}
+//			}
 			return $this->_cachePath.'/'.str_replace($this->_realPath, '', $fileName);
         }
     }
