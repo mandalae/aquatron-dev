@@ -1,5 +1,5 @@
 <?php
-require_once 'ImageDB.php';
+require_once '_class/ImageDB.php';
 /**
  * Smarty plugin
  * @package Smarty

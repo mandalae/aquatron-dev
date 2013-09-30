@@ -72,7 +72,7 @@ class Content{
 				if (is_integer($value)){
 					$sql .= $value;
 				} else {
-					//$sql .= "'" . mysqli_real_escape_string($this->_db->getMysqli(), $value) . "'";
+					//$sql .= "'" . mysql_real_escape_string($value) . "'";
 					$sql .= "'" . stripslashes($value) . "'";
 				}
 				if (count($this->_data) > $x){
@@ -88,7 +88,7 @@ class Content{
 				if (is_integer($value) > 0){
 					$sql .= $key. " = " . $value;
 				} else {
-					//$sql .= $key. " = '" . mysqli_real_escape_string($this->_db->getMysqli(), $value) . "'";
+					//$sql .= $key. " = '" . mysql_real_escape_string($value) . "'";
 					$sql .= $key . " = '" . stripslashes($value) . "'";
 				}
 				if (count($this->_data) > $x){
@@ -159,8 +159,11 @@ class Content{
     	}
 	}
 
-    protected function getAll(){
+    protected function getAll($orderBy = null){
         $sql = "SELECT * FROM " . $this->_tableName;
+        if (!is_null($orderBy)){
+            $sql .= " ORDER BY " . $orderBy;
+        }
         $res = $this->_db->query($sql);
         $return = array();
         while ($row = mysql_fetch_array($res)){

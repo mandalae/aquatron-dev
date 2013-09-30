@@ -24,6 +24,7 @@
                 <li><a href="/admin/courses">Courses</a></li>
                 <li><a href="/admin/users">Users</a></li>
                 <li><a href="/admin/brands">Brands</a></li>
+                <li><a href="/admin/categories">Categories</a></li>
                 <li><a href="/admin/products">Products</a></li>
                 <li><a href="/admin/teasers">Teasers</a></li>
             </ul>

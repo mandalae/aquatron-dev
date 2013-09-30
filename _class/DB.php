@@ -5,9 +5,10 @@ class DB{
     var $_last_query;
 
     function __construct(){
-        include "credentials.php";
+        include "_inc/credentials.php";
 
-        $this->_db = new mysqli($dbhost, $dbuser, $dbpass, $dbbass);
+        $this->_db = mysql_connect($dbhost, $dbuser, $dbpass);
+        mysql_select_db($dbbass);
         return $this;
     }
 
@@ -17,26 +18,26 @@ class DB{
 
     public function query($sql){
     	$this->_last_query = $sql;
-        $res = mysqli_query($this->_db, $sql);
+        $res = mysql_query($sql);
         if (!$res || is_string($res)){
-            throw new Exception("Error in sql statement (" . $res . "): " . mysqli_error($this->_db));
+            throw new Exception("Error in sql statement (" . $res . "): " . mysql_error($this->_db));
         }
         return $res;
     }
 
     public function getLastId(){
-    	return mysqli_insert_id($this->_db);
+    	return mysql_insert_id();
     }
 
-    public function getLastQuery(){
-    	return $this->_last_query;
+    public function getLastQuery()
+{    	return $this->_last_query;
     }
 
     public function getOne($sql){
     	$this->_last_query = $sql;
-    	$res = mysqli_query($this->_db, $sql);
+    	$res = mysql_query($sql);
     	if (mysql_num_rows($res) > 0){
-	    	$row = mysqli_fetch_row($res);
+	    	$row = mysql_fetch_row($res);
 	    	return $row[0];
     	} else {
     		return null;
@@ -45,12 +46,12 @@ class DB{
 
     public function getAll($sql){
     	$this->_last_query = $sql;
-    	$res = mysqli_query($this->_db, $sql);
+    	$res = mysql_query($sql);
         if (!$res || is_string($res)){
-            throw new Exception("Error in sql statement (" . $res . "): " . mysqli_error($this->_db));
+            throw new Exception("Error in sql statement (" . $res . "): " . mysql_error($this->_db));
         }
         $data = array();
-        while ($row = mysqli_fetch_array($res)){
+        while ($row = mysql_fetch_array($res)){
         	$data[] = $row;
         }
         return $data;

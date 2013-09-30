@@ -9,11 +9,11 @@ function aq_autoload($class_name) {
     $found = false;
     $includePaths = explode(':', get_include_path());
     foreach ($includePaths as $path){
-        if (@is_file($path . '/' . $class_name . '.php'))
+        if (@is_file($path . '/_class/' . $class_name . '.php'))
             $found = true;
     }
     if ($found)
-        require_once $class_name . '.php';
+        require_once '_class/' . $class_name . '.php';
 }
 
 spl_autoload_register('aq_autoload');
@@ -31,7 +31,7 @@ $brands = $brand->getAllActive();
 $page->assign('brands', $brands);
 
 $category = new Category();
-$categories = $category->getAllActive();
+$categories = $category->getAllActiveForMenu();
 
 $page->assign('categories', $categories);
 

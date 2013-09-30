@@ -135,23 +135,20 @@ a:active {
             color: #666;
         }
 
-/*#footer {
-    position: fixed;
-    left: 0px;
-    bottom: 0px;
-    background: #000 url(/_gfx/footer-bg.png) top repeat-x;
+#footer {
     height: 20px;
     width: 100%;
-    color: #AAA;
+    color: #333;
     text-align: center;
-    padding-top: 80px;
-}*/
+    padding-top: 20px;
+    float:left;
+    clear:both;
+}
 
 #content {
     float: left;
     width: 1120px;
     padding-top: 10px;
-    padding-bottom: 100px;
     background: url(/_gfx/main-bg.png) repeat;
 }
 
@@ -352,12 +349,15 @@ fieldset {
     clear: both;
     margin-bottom: 20px;
 }
-
+    .form-element textarea,
     .form-element input {
         width: 300px;
         padding: 5px;
         border-radius: 5px;
         border: 1px solid #AAA;
+    }
+    .form-element textarea {
+        height: 150px;
     }
     .form-element label {
         display: block;
