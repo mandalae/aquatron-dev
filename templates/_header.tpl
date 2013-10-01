@@ -21,7 +21,14 @@
                     <div class="hidden overlay" id="category-overlay">
                         <ul>
                         {foreach $categories as $category}
-                            <li><a href="/category/{$category['seo']}">{$category['name']}</a></li>
+                            <li class="parentCat{if $category@index%5==0} clear{/if}">
+                                <a href="/category/{$category['parent']['seo']}"><strong>{$category['parent']['name']}</strong></a>
+                                <ul>
+                                    {foreach $category['children'] as $child}
+                                    <li class="childCat"><a href="/category/{$child['seo']}">{$child['name']}</a></li>
+                                    {/foreach}
+                                </ul>
+                            </li>
                         {/foreach}
                         </ul>
                     </div>

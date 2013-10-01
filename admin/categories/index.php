@@ -10,6 +10,10 @@ if (isset($_GET['delete'])){
 
 $category = new Category();
 $categories = $category->getAll("name ASC");
+foreach ($categories as $key => $category){
+    $cat = new Category($category['parent_category']);
+    $categories[$key]['parent'] = $cat->getName();
+}
 
 $page->assign('categories', $categories);
 

@@ -13,7 +13,9 @@ if (isset($_POST['name'])){
     header("Location: /admin/categories");
 }
 
-$page->assign('category', $category);
+$categories = $category->getAllActive();
 
+$page->assign('category', $category);
+$page->assign('cats', $categories);
 
 $page->display('admin/categories/edit.tpl');

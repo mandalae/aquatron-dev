@@ -13,7 +13,7 @@
         <label for="name">Parent Category:</label>
         <select name="parent_category">
             <option>Select one</option>
-            {foreach $categories as $cat}
+            {foreach $cats as $cat}
                 <option value="{$cat['id']}"{if $cat['id'] == $category->getParent_category()} selected="selected"{/if}>{$cat['name']}</option>
             {/foreach}
         </select>

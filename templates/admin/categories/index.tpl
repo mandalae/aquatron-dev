@@ -12,6 +12,7 @@
     <thead>
         <tr>
             <th>Category name</th>
+            <th>Parent category</th>
             <th>Options</th>
         </tr>
     </thead>
@@ -19,6 +20,7 @@
         {foreach $categories as $category}
         <tr>
             <td>{$category['name']}</td>
+            <td style="white-space: nowrap;">{$category['parent']}</td>
             <td><a href="/admin/categories/edit.php?id={$category['id']}">Edit</a> | <a href="/admin/categories/?delete={$category['id']}" class="js-confirm">Delete</a></td>
         </tr>
         {/foreach}
