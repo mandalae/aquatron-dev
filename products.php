@@ -19,6 +19,10 @@ $brand->loadByType('seo', $brandSeo);
 $category = new Category();
 $category->loadByType('seo', $categorySeo);
 
+if ($category->getParent_category() == 0){
+    $children = 
+}
+
 $product = new Product();
 $meta = $product->getActiveProducts(array('brand' => $brand->getId(), 'category' => $category->getId(), 'offer' => $offer), ($offset*$limit), $limit);
 
