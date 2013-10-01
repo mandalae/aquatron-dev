@@ -8,9 +8,9 @@ class Product extends Content {
         $sql = "SELECT * FROM " . $this->_tableName . " WHERE active > 0 AND name != ''";
         $countSql = "SELECT count(1) as number FROM " . $this->_tableName . " WHERE active > 0 AND name != ''";
         
-        if (isset($options['category']) && $options['category'] > 0){
-            $sql .= " AND category = " . $options['category'];
-            $countSql .= " AND category = " . $options['category'];
+        if (isset($options['categories']) && count($options['categories']) > 0){
+            $sql .= " AND category IN (" . implode(',', $options['categories']) . ")";
+            $countSql .= " AND category IN (" . implode(',', $options['categories']) . ")";
         }
         
         if (isset($options['brand']) && $options['brand'] > 0){
