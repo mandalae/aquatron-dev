@@ -19,12 +19,19 @@ $brand->loadByType('seo', $brandSeo);
 $category = new Category();
 $category->loadByType('seo', $categorySeo);
 
-if ($category->getParent_category() == 0){
-    $children = 
+if (!$category->isNew()){
+    $includeCats = array($category->getId());
+    if ($category->getParent_category() == 0){
+        $children = $category->getChildren();
+
+        foreach ($children as $child){
+            $includeCats[] = $child['id'];
+        }
+    }
 }
 
 $product = new Product();
-$meta = $product->getActiveProducts(array('brand' => $brand->getId(), 'category' => $category->getId(), 'offer' => $offer), ($offset*$limit), $limit);
+$meta = $product->getActiveProducts(array('brand' => $brand->getId(), 'categories' => $includeCats, 'offer' => $offer), ($offset*$limit), $limit);
 
 $page->assign('products', $meta['products']);
 $page->assign('nextPage', $offset+1);

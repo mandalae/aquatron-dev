@@ -3,11 +3,17 @@
 <h1>{$headline}</h1>
 
 {$text}
+
+<div id="search-criteria">
+    Price range
+    Manufacturer
+    Category
+</div>
+
 <div class="product-list">
 {if isset($products)}
     {foreach from=$products item='product'}
         <section>
-            <h3>{$product['name']}</h3>
             <div class="image">
                 {if $product['image'] > 0}
                     {image id=$product['image'] height="200" width="250"}
@@ -15,6 +21,7 @@
                     <img src="/_gfx/no-image.png" height="200" width="250" />
                 {/if}
             </div>
+            <div class="product-list-info">{$product['name']}</div>
             <a href="/product/{$product['seo']}" class="product-link button blue">Product information</a>
         </section>
     {/foreach}

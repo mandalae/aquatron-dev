@@ -35,6 +35,7 @@ RewriteRule ^login$ /login.php [nc]
 RewriteRule ^staff$ /staff.php [nc]
 RewriteRule ^register$ /register.php [nc]
 RewriteRule ^contact$ /contact.php [nc]
+RewriteRule ^newsletter$ /newsletter.php [nc]
 
 RewriteRule ^offers$ /products.php?offers=true [nc]
 RewriteRule ^products$ /products.php [nc]

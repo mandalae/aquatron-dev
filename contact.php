@@ -24,7 +24,9 @@ if (isset($_POST['name'])){
     $params["username"] = "c@rpediem.com"; 
     $params["password"] = "LIeow75qt"; 
 
+    // Create the mail object using the Mail::factory method 
     $mail_object =& Mail::factory("smtp", $params); 
+
     $mail_object->send($recipients, $headers, $body); 
 }
 

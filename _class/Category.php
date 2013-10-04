@@ -25,7 +25,9 @@ class Category extends Content {
         return $return;
     }
     
-    public function getChildren($rowId){
+    public function getChildren($rowId = null){
+        if (is_null($rowId)) $rowId = $this->getId();
+        
         $sql = "SELECT * FROM " . $this->_tableName . " WHERE active > 0 AND parent_category = " . $rowId;
         $childRes = $this->_db->query($sql);
         $return = array();
