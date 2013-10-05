@@ -1,13 +1,5 @@
 var overlayTimeout = null;
 $(function(){
-    $(".js-formInput").focus(function(e){
-        if (!$(this).hasClass('no-bg'))
-            $(this).addClass('no-bg');
-    });
-    $(".js-formInput").blur(function(e){
-        if ($(this).val().length == 0)
-            $(this).removeClass('no-bg');
-    });
     
     $(".js-brandsButton").bind('mouseenter', function(e){
         clearTimeout(overlayTimeout);
@@ -17,7 +9,7 @@ $(function(){
     
     $(".js-brandsButton").bind('mouseleave', function(e){
         overlayTimeout = setTimeout(function(){
-            $("#brand-overlay").slideUp('fast');
+            $("#brand-overlay").hide();
         }, 500)
     });
     
@@ -29,7 +21,7 @@ $(function(){
     
     $(".js-categoryButton").bind('mouseleave', function(e){
         overlayTimeout = setTimeout(function(){
-            $("#category-overlay").slideUp('fast');
+            $("#category-overlay").hide();
         }, 500)
     });
     
@@ -41,7 +33,7 @@ $(function(){
     
     $(".js-aquatronButton").bind('mouseleave', function(e){
         overlayTimeout = setTimeout(function(){
-            $("#aquatron-overlay").slideUp('fast');
+            $("#aquatron-overlay").hide();
         }, 500)
     });
     
@@ -53,7 +45,7 @@ $(function(){
     
     $(".js-courseButton").bind('mouseleave', function(e){
         overlayTimeout = setTimeout(function(){
-            $("#course-overlay").slideUp('fast');
+            $("#course-overlay").hide();
         }, 500)
     });
     

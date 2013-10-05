@@ -117,7 +117,7 @@ a:active {
 .top-right-menu {
     float: right;
     width: 1114px;
-    background: url(/_gfx/main-bg.png) repeat;
+    background: #FDFDFD;
     padding: 3px;
     position:absolute;
     top: 0px;
