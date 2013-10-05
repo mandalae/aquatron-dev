@@ -8,10 +8,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout'){
     header("Location: /");
 }
 
+if (isset($_POST['email']) && $_POST['email'] != '' && isset($_POST['password']) && $_POST['password'] != ''){
+    if ($user->login($_POST['email'], $_POST['password']))
+        header("Location: " . $_POST['returnUrl']);
+    else 
+        $page->assign("error", true);
 
-if ($user->login($_POST['email'], $_POST['password']))
-    header("Location: " . $_POST['returnUrl']);
-else 
-    $page->assign("error", true);
+}
+
 
 $page->display('login.tpl');

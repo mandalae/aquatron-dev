@@ -11,7 +11,27 @@
     
         <header id="top">
             <div id="logo">
-                <a href="/"><img src="/_gfx/logo.gif" /></a>
+                <a href="/"><img src="/_gfx/logo.gif" class="logo" /></a>
+                <div class="top-right-menu">
+                    <ul>
+                        {if !$user->isLoggedIn()}
+                            <li><a href="/register">Register</a></li>
+                            <li><a href="/login">Login</a></li>
+                        {else}
+                            <li class="list-item-logout right">
+                                <a href="/login?action=logout">Logout</a>
+                            </li>
+                            {if $user->getAcl() == $smarty.const.ACL_ADMIN}
+                                <li class="right">
+                                    <a href="/admin">Admin</a>
+                                </li>
+                            {/if}
+                        {/if}
+                    </ul>
+                </div>
+                <div class="social-media">
+                    <a href="https://www.facebook.com/aquatrondivecentre" target="_blank"><img src="/_gfx/facebook.png" /></a>
+                </div>
             </div>
         </header>
         <nav>
@@ -67,26 +87,15 @@
                 <li>
                     <a href="/offers">Special offers</a>
                 </li>
-                <li><a href="/register">Register</a></li>
-                {if !$user->isLoggedIn()}
-                <li class="list-item-login right">
-                    <form method="post" action="/login">
-                        <input type="hidden" value="{$smarty.server.REQUEST_URI}" name="returnUrl">
-                        <input type="text" value="" name="email" class="js-formInput login-form-email" />
-                        <input type="password" class="js-formInput login-form-password" name="password" />
-                        <input type="submit" value="Login" class="button green box-shadow" />
-                    </form>
+                <li>
+                    <a href="/newsletter">Newsletter</a>
                 </li>
-                {else}
-                <li class="list-item-logout right">
-                    <a href="/login?action=logout">Logout</a>
+                <li>
+                    <a href="/contact">Contact</a>
                 </li>
-                {if $user->getAcl() == $smarty.const.ACL_ADMIN}
                 <li class="right">
-                    <a href="/admin">Admin</a>
+                    <a href="http://www.breathingairsystems.co.uk" target="_blank">Breathing Air Systems</a>
                 </li>
-                {/if}
-                {/if}
             </ul>
         </nav>
         <div id="content">

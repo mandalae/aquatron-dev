@@ -142,7 +142,7 @@ class Image extends Content {
 				$height = $info['geometry']['height'];
 			}
 			
-			
+			$crop = true;
 			if ($crop) {
 				$this->_im->cropThumbnailImage($width, $height);
 			} else {
