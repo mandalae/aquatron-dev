@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" href="/_css/style.css" type="text/css" media="screen, projection" />
 
     <title>Aquatron{if isset($title)} :: {$title}{/if}</title>

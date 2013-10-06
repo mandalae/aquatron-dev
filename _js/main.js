@@ -60,4 +60,16 @@ $(function(){
         current.fadeOut('fast');
         next.fadeIn('fast');
     }, 10000);
+    
+    $( "#priceRange" ).slider({
+          range: true,
+          min: 0,
+          max: 1000,
+          values: [ 0, 1000 ],
+          slide: function( event, ui ) {
+            $( "#amount" ).val( "\u00A3" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+          }
+        });
+        $( "#amount" ).val( "\u00A3" + $( "#priceRange" ).slider( "values", 0 ) +
+          " - \u00A3" + $( "#priceRange" ).slider( "values", 1 ) );
 });
