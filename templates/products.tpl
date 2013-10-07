@@ -4,7 +4,7 @@
 
 {$text}
 
-<div id="search-criteria" style="float: left; clear: both; width: 100%; margin-bottom: 30px;">
+<div id="search-criteria" style="float: left; clear: both; width: 1020px; margin-bottom: 30px; background: #FDFDFD; padding: 20px; border-radius: 5px; border: #666 1px solid; ">
     <form method="post">
         <div style="float: left; width: 300px; clear: none; margin-right: 30px;">
             <p>

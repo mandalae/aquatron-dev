@@ -72,4 +72,6 @@ $(function(){
         });
         $( "#amount" ).val( "\u00A3" + $( "#priceRange" ).slider( "values", 0 ) +
           " - \u00A3" + $( "#priceRange" ).slider( "values", 1 ) );
+          
+    
 });
