@@ -69,9 +69,15 @@ $(function(){
           slide: function( event, ui ) {
             $( "#amount" ).val( "\u00A3" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
           }
-        });
-        $( "#amount" ).val( "\u00A3" + $( "#priceRange" ).slider( "values", 0 ) +
-          " - \u00A3" + $( "#priceRange" ).slider( "values", 1 ) );
+    });
+    
+    $( "#amount" ).val( "\u00A3" + $( "#priceRange" ).slider( "values", 0 ) +
+      " - \u00A3" + $( "#priceRange" ).slider( "values", 1 ) );
           
+//    $("#product-brands").live('change', function(e){
+//        $.post('/_feeds/product-list.php', {brandId: }, function(html){
+//            
+//        });
+//    });
     
 });
