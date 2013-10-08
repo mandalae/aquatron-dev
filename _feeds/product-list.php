@@ -1,15 +1,17 @@
 <?php
-$offset = isset($_GET['offset']) ? $_GET['offset'] : 0;
-$limit = isset($_GET['limit']) ? $_GET['limit'] : 16;
-$brandSeo = isset($_GET['brand']) ? $_GET['brand'] : null;
-$categorySeo = isset($_GET['category']) ? $_GET['category'] : null;
-$offer = isset($_GET['offers']) ? true : false;
+require_once "../_inc/_page.php";
 
-$brand = new Brand();
-$brand->loadByType('seo', $brandSeo);
+$offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
+$limit = isset($_POST['limit']) ? $_POST['limit'] : 16;
+$brandId = isset($_POST['brandId']) ? $_POST['brandId'] : null;
+$categoryId = isset($_POST['categoryId']) ? $_POST['categoryId'] : null;
+$query = isset($_POST['query']) ? $_POST['query'] : null;
+$lowerPrice = isset($_POST['lowerPrice']) ? $_POST['lowerPrice'] : null;
+$upperPrice = isset($_POST['upperPrice']) ? $_POST['upperPrice'] : null;
 
-$category = new Category();
-$category->loadByType('seo', $categorySeo);
+$brand = new Brand($brandId);
+
+$category = new Category($categoryId);
 
 if (!$category->isNew()){
     $includeCats = array($category->getId());
@@ -23,7 +25,7 @@ if (!$category->isNew()){
 }
 
 $product = new Product();
-$meta = $product->getActiveProducts(array('brand' => $brand->getId(), 'categories' => $includeCats, 'offer' => $offer), ($offset*$limit), $limit);
+$meta = $product->getActiveProducts(array('brand' => $brand->getId(), 'categories' => $includeCats, 'offer' => $offer, 'query' => $query, 'price' => array('lower' => $lowerPrice, 'upper' => $upperPrice)), ($offset*$limit), $limit);
 
 $page->assign('products', $meta['products']);
 $page->assign('nextPage', $offset+1);
@@ -33,7 +35,7 @@ if ($meta['numberOfProducts'] > ($offset*$limit)+$limit){
 } else {
     $page->assign('showMore', false);
 }
-$page->assign('categorySeo', $categorySeo);
-$page->assign('brandSeo', $brandSeo);
+$page->assign('categorySeo', $categoryId);
+$page->assign('brandSeo', $brandId);
 
 $page->display('product-list.tpl');

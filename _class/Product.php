@@ -23,6 +23,16 @@ class Product extends Content {
             $countSql .= " AND brand > 0";
         }
 
+        if (isset($options['query']) && $options['query']){
+            $sql .= " AND name LIKE '%" . $options['query'] . "%'";
+            $countSql .= " AND name LIKE '%" . $options['query'] . "%'";
+        }
+
+        if (isset($options['price']) && count($options['price']) > 0){
+            $sql .= " AND price > " . $options['price']['lower']*100 . " AND price < " . $options['price']['upper']*100; 
+            $countSql .= " AND price > " . $options['price']['lower']*100 . " AND price < " . $options['price']['upper']*100;
+        }
+
         $count = $this->_db->query($countSql);
         $countRow = mysql_fetch_row($count);
 
@@ -38,10 +48,10 @@ class Product extends Content {
     }
     
     public function getFormattedPrice(){
-        return number_format($this->getPrice()/10, 2);
+        return number_format($this->getPrice()/100, 2);
     }
     
     public function getFormattedWeight(){
-        return number_format($this->getWeight()/10, 2);
+        return number_format($this->getWeight()/100, 2);
     }
 }
